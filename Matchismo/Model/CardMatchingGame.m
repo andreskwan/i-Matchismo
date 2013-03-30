@@ -50,7 +50,9 @@
 #define FLIP_COST 1
 #define MISMATCH_PENALTY 2
 #define MATCH_BONUS 4
-
+//takes one card
+//set the state in the playing deck
+//
 - (void)flipCardAtIndex:(NSUInteger)index{
     Card *card = [self cardAtIndex:index];
     //what makes a card unplayable??? NO means playable
@@ -64,13 +66,16 @@
                     otherCard.unpleyable = YES;
                     card.unpleyable = YES;
                     self.score += matchScore * MATCH_BONUS;
+                    NSLog(@"MATCH_BONUS: %d", MATCH_BONUS);
                 }else{
                     otherCard.faceUp = NO;
                     self.score -= MISMATCH_PENALTY;
+                    NSLog(@"MISMATCH_PENALTY: %d",MISMATCH_PENALTY);
                 }
-            }
-            self.score -= FLIP_COST;    
+            }            
         }
+        self.score -= FLIP_COST;
+        NSLog(@"FLIP_COST: %d",FLIP_COST);
         card.faceUp = !card.isFaceUp;
     }
 }
