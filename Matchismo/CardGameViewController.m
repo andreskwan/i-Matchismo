@@ -42,9 +42,12 @@
     //[self setCardButtons:<#(NSArray *)#>]
     //elimino juego anterior
     self.game = nil;
-    //creo nuevo juego
+    self.flipCount = 0;
+        //creo nuevo juego
     [self game];
     [self updateUI];
+    self.machedCardsLabel.text = @"New game started";
+
     
 }
 

@@ -29,3 +29,6 @@ add 2 cards game mode
 
 11:14 I identify why score is going crazy, because flip cost is happening every cicle of the for loop in flipCardAtIndex
 11:19 solved
+
+12:13 I put the string messages of the game state in the CardMatchingGame.TwoCardGame
+- because this is related with the game not with the controller 
