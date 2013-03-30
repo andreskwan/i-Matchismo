@@ -32,3 +32,6 @@ add 2 cards game mode
 
 12:13 I put the string messages of the game state in the CardMatchingGame.TwoCardGame
 - because this is related with the game not with the controller 
+
+ABSTRACTION Note
+This MVC must be designed in such way that I could play the game in the console or in the phone 
