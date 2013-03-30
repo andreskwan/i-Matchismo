@@ -14,6 +14,7 @@
 //designated initializer 
 - (id)initWithCardCount:(NSUInteger)cardCount usingDeck:(Deck *)deck;
 - (void)flipCardAtIndex:(NSUInteger)index;
+- (NSString *)twoCardGame:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
 
 //has not setter only getter

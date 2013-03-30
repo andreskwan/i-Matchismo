@@ -26,6 +26,7 @@
 @property (weak, nonatomic)     Card                    *flipedCard;
 
 @property (strong, nonatomic)   IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (strong, nonatomic)   NSString                *gameStateString;
 @end
 
 @implementation CardGameViewController
@@ -39,14 +40,15 @@
 //}
 
 - (IBAction)newGame {
-    //[self setCardButtons:<#(NSArray *)#>]
+    //[self setCardButtons:]
     //elimino juego anterior
     self.game = nil;
     self.flipCount = 0;
         //creo nuevo juego
     [self game];
     [self updateUI];
-    self.machedCardsLabel.text = @"New game started";
+    //self.machedCardsLabel.text = @"New game started";
+    self.machedCardsLabel.text = @"Iniciar nuevo juego";
 
     
 }
@@ -93,16 +95,19 @@
     }
     //this should be set in the game part, because we don't know the game
     //just one card shouldn't add score
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
-
+    //self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    self.scoreLabel.text = [NSString stringWithFormat:@"Puntaje: %d", self.game.score];
     //verify if not nil, is that a problem?
-    self.machedCardsLabel.text = [NSString stringWithFormat:@"Flipped up %@",self.flipedCard.contents];
+    //self.machedCardsLabel.text = [NSString stringWithFormat:@"Flipped up %@",self.flipedCard.contents];
+    NSLog(@"self.gameStateString: %@",self.gameStateString);
+    self.machedCardsLabel.text = self.gameStateString;
 }
 
 //view modification
 - (void) setFlipCount:(int)flipCount{
     _flipCount = flipCount;
-    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
+    //self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
+    self.flipsLabel.text = [NSString stringWithFormat:@"Giros: %d", self.flipCount];
     NSLog(@"flips updated to %d",self.flipCount);
 }
 
@@ -112,8 +117,8 @@
     
     //Game
     //the price to play that selected card
-    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
-    
+//    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
+    self.gameStateString = [self.game twoCardGame:[self.cardButtons indexOfObject:sender]];
     //this is in the view
     self.flipedCard = [self.game cardAtIndex:[self.cardButtons indexOfObject:sender]];
     

@@ -68,12 +68,13 @@
     
 //}
 
--(NSString *)twoCardGame:(NSInteger)index{
-    
-    NSString * gameStateString = @"Not a match";
+-(NSString *)twoCardGame:(NSUInteger)index{
+
+   
     //identify the card in the set of cards being played
     Card *card = [self cardAtIndex:index];
-    
+    //NSString * gameStateString = [NSString stringWithFormat:@"Flipped up %@", card.contents];
+    NSString * gameStateString = [NSString stringWithFormat:@"Carta girada %@", card.contents];
     //what makes a card unplayable??? NO means playable
     //card can be played?
     if (!card.isUnplayable) {
@@ -94,14 +95,16 @@
                         card.unpleyable = YES;
                         self.score += matchScore * MATCH_BONUS;
                         NSLog(@"MATCH_BONUS: %d", MATCH_BONUS);
-                        gameStateString = [NSString stringWithFormat:@"Matched %@ & %@ for %d points", card.contents, otherCard.contents, MATCH_BONUS];
-                        NSLog(gameStateString);
+                        //gameStateString = [NSString stringWithFormat:@"Matched %@ & %@ for %d points", card.contents, otherCard.contents, MATCH_BONUS];
+                        gameStateString = [NSString stringWithFormat:@"Par %@ & %@ (%d pts ganados)", card.contents, otherCard.contents, MATCH_BONUS];
+                        NSLog(@"%@",gameStateString);
                     }else{
                         otherCard.faceUp = NO;
                         self.score -= MISMATCH_PENALTY;
                         NSLog(@"MISMATCH_PENALTY: %d",MISMATCH_PENALTY);
-                        gameStateString = [NSString stringWithFormat:@"%@ & %@ Don't match! - %d", card.contents, otherCard.contents, MISMATCH_PENALTY];
-                                                NSLog(gameStateString);
+                        //gameStateString = [NSString stringWithFormat:@"%@ & %@ Don't match! - %d", card.contents, otherCard.contents, MISMATCH_PENALTY];
+                        gameStateString = [NSString stringWithFormat:@"No par %@ & %@ (%d pts perdidos)", card.contents, otherCard.contents, MISMATCH_PENALTY];
+                        NSLog(@"%@",gameStateString);
                     }
                 }
                 //NSLog(@"otherCard not matched: %@: ", otherCard.contents);
@@ -113,8 +116,10 @@
         //set it as faceUp = YES
         //this card become one the otherCard whit this state set
         card.faceUp = !card.isFaceUp;
-        return gameStateString;
+        //
+        NSLog(@"%@",gameStateString);   
     }
+    return gameStateString;
 }
 
 

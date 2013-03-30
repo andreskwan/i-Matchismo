@@ -16,11 +16,8 @@ DONE 4.1 add button,
 
 03/30/13
 10:18
-solved issue in CardGameViewCOntroller 
+solved issue in CardGameViewController 
 I commented the cardButton setTitle:forState
-
-TODO
-- review video related with this subject
 
 10:43
 add 2 cards game mode 
@@ -35,3 +32,13 @@ add 2 cards game mode
 
 ABSTRACTION Note
 This MVC must be designed in such way that I could play the game in the console or in the phone 
+
+TODO
+03/30/13
+- review video related with this subject setting button states
+
+2:02
+- tell the user that has been finished! display an image
+- set labels in colors to give feedback related with score state
+
+
