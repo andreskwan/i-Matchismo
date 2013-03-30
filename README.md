@@ -21,3 +21,6 @@ I commented the cardButton setTitle:forState
 
 TODO
 - review video related with this subject
+
+10:43
+add 2 cards game mode 
