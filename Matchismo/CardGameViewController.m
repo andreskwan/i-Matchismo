@@ -96,23 +96,27 @@
     self.machedCardsLabel.text = [NSString stringWithFormat:@"Flipped up %@",self.flipedCard.contents];
 }
 
-
+//view modification
 - (void) setFlipCount:(int)flipCount{
     _flipCount = flipCount;
     self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
     NSLog(@"flips updated to %d",self.flipCount);
 }
 
+//game behavior
 - (IBAction)flipCard:(UIButton *)sender
 {//  sender.selected = !sender.isSelected;
     
+    //Game
     //the price to play that selected card
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     
+    //this is in the view
     self.flipedCard = [self.game cardAtIndex:[self.cardButtons indexOfObject:sender]];
     
     NSLog(@"self.flipedCard: %@",self.flipedCard.contents);
     
+    //
     self.flipCount++;
     [self updateUI];
     

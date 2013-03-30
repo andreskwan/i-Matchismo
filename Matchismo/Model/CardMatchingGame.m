@@ -53,11 +53,12 @@
 
 - (void)flipCardAtIndex:(NSUInteger)index{
     Card *card = [self cardAtIndex:index];
-    //what makes a card unplayable??? NO means playable 
+    //what makes a card unplayable??? NO means playable
     if (!card.isUnplayable) {
+        //compare agains all playing cards!!! why?
         for (Card *otherCard in self.cards) {
-//            if (card != otherCard && (otherCard.isFaceUp && !otherCard.isUnplayable)) {
-            if (otherCard.isFaceUp && !otherCard.isUnplayable) {
+            if (card != otherCard && (otherCard.isFaceUp && !otherCard.isUnplayable)) {
+          //  if (otherCard.isFaceUp && !otherCard.isUnplayable) {
                 int matchScore = [card match:@[otherCard]];
                 if (matchScore) {
                     otherCard.unpleyable = YES;
