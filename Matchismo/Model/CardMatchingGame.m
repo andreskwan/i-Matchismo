@@ -96,14 +96,14 @@
                         self.score += matchScore * MATCH_BONUS;
                         NSLog(@"MATCH_BONUS: %d", MATCH_BONUS);
                         //gameStateString = [NSString stringWithFormat:@"Matched %@ & %@ for %d points", card.contents, otherCard.contents, MATCH_BONUS];
-                        gameStateString = [NSString stringWithFormat:@"Par %@ & %@ (%d pts ganados)", card.contents, otherCard.contents, MATCH_BONUS];
+                        gameStateString = [NSString stringWithFormat:@"%@ & %@ (%d pts)", card.contents, otherCard.contents, MATCH_BONUS];
                         NSLog(@"%@",gameStateString);
                     }else{
                         otherCard.faceUp = NO;
                         self.score -= MISMATCH_PENALTY;
                         NSLog(@"MISMATCH_PENALTY: %d",MISMATCH_PENALTY);
                         //gameStateString = [NSString stringWithFormat:@"%@ & %@ Don't match! - %d", card.contents, otherCard.contents, MISMATCH_PENALTY];
-                        gameStateString = [NSString stringWithFormat:@"No par %@ & %@ (%d pts perdidos)", card.contents, otherCard.contents, MISMATCH_PENALTY];
+                        gameStateString = [NSString stringWithFormat:@"%@ & %@ (-%d pts)", card.contents, otherCard.contents, MISMATCH_PENALTY];
                         NSLog(@"%@",gameStateString);
                     }
                 }

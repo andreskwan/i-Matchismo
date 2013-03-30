@@ -43,7 +43,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Giros: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="grq-ha-Bnf">
-                                <rect key="frame" x="18" y="419" width="68" height="21"/>
+                                <rect key="frame" x="13" y="419" width="79" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -254,19 +254,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Puntaje:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zSF-vs-ONk">
-                                <rect key="frame" x="107" y="419" width="106" height="21"/>
+                                <rect key="frame" x="113" y="419" width="95" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Estado de juego" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uKQ-xo-gpv">
-                                <rect key="frame" x="20" y="376" width="280" height="21"/>
+                                <rect key="frame" x="20" y="380" width="208" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="65C-Vu-3FC">
-                                <rect key="frame" x="233" y="419" width="70" height="22"/>
+                                <rect key="frame" x="234" y="419" width="68" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Nuevo">
@@ -280,11 +280,23 @@
                                     <action selector="newGame" destination="2" eventType="touchUpInside" id="02Z-TF-JMz"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Akh-zh-Y94">
+                                <rect key="frame" x="224" y="376" width="87" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                </segments>
+                                <connections>
+                                    <action selector="selectedGame:" destination="2" eventType="valueChanged" id="ctD-ei-LP0"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="flipsLabel" destination="grq-ha-Bnf" id="4EP-4d-Bqq"/>
+                        <outlet property="gameSelector" destination="Akh-zh-Y94" id="eTC-Zm-s8u"/>
                         <outlet property="machedCardsLabel" destination="uKQ-xo-gpv" id="bLW-XT-MU6"/>
                         <outlet property="scoreLabel" destination="zSF-vs-ONk" id="S2U-c6-9Tc"/>
                         <outletCollection property="cardButtons" destination="EgN-yt-xus" id="fxE-fH-wHV"/>
@@ -307,7 +319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="209" y="208"/>
+            <point key="canvasLocation" x="43" y="213"/>
         </scene>
     </scenes>
     <classes>
@@ -315,7 +327,9 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
             <relationships>
                 <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
+                <relationship kind="action" name="selectedGame:"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="gameSelector" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="machedCardsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>

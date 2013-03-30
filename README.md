@@ -33,6 +33,9 @@ add 2 cards game mode
 ABSTRACTION Note
 This MVC must be designed in such way that I could play the game in the console or in the phone 
 
+5:27
+I add the SegemtedCOntrol, now I'm going to add the logic behind it
+
 TODO
 03/30/13
 - review video related with this subject setting button states
@@ -41,4 +44,8 @@ TODO
 - tell the user that has been finished! display an image
 - set labels in colors to give feedback related with score state
 
+
+2:08 
+- use a modal window to ask the user if he is sure about to start a new game
+- create a splash for the game
 

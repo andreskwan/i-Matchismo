@@ -27,6 +27,7 @@
 
 @property (strong, nonatomic)   IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (strong, nonatomic)   NSString                *gameStateString;
+@property (strong, nonatomic)   IBOutlet UISegmentedControl *gameSelector;
 @end
 
 @implementation CardGameViewController
@@ -134,6 +135,14 @@
     
 }
 
+- (IBAction)selectedGame:(id)sender {
+    if (self.gameSelector.selectedSegmentIndex == 0) {
+        NSLog(@"selected two cards");
+    }
+    if (self.gameSelector.selectedSegmentIndex == 1) {
+        NSLog(@"selected three cards");
+    }
+}
 
 
 @end
