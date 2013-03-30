@@ -77,8 +77,10 @@
     for (UIButton *cardButton in self.cardButtons) {
         //obtain the card being played of flipped
         Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
-        //change the state of the card 
-        //[cardButton setTitle:card.contents forState:UIControlStateSelected];
+        //change the state of the card
+        //if not set keep displaying card set value in the view
+        [cardButton setTitle:card.contents forState:UIControlStateSelected];
+        //if not set second card selected do not display its contents
         [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
         
         //view attributes of the card

@@ -13,3 +13,11 @@ DONE 3.2 flipped card
 DONE 4.1 add button, 
 4.2 set UI according to new game
 4.2 add modal to allow to cancel
+
+03/30/13
+10:18
+solved issue in CardGameViewCOntroller 
+I commented the cardButton setTitle:forState
+
+TODO
+- review video related with this subject
