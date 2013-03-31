@@ -11,6 +11,8 @@
 
 @interface CardMatchingGame : NSObject
 
+@property (assign,nonatomic) NSUInteger         matchingCardGameMode;
+
 //designated initializer 
 - (id)initWithCardCount:(NSUInteger)cardCount usingDeck:(Deck *)deck;
 - (void)flipCardAtIndex:(NSUInteger)index;

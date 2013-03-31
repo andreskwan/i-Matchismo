@@ -28,10 +28,13 @@
 @property (strong, nonatomic)   IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (strong, nonatomic)   NSString                *gameStateString;
 @property (strong, nonatomic)   IBOutlet UISegmentedControl *gameSelector;
+@property (nonatomic)           NSUInteger              *chooseGame;
 @end
 
 @implementation CardGameViewController
 
+#define TWO_CARD_MODE   2
+#define THREE_CARD_MODE 3
 //- (Deck *) deck
 //{
 //    if (!_deck) {
@@ -50,6 +53,7 @@
     [self updateUI];
     //self.machedCardsLabel.text = @"New game started";
     self.machedCardsLabel.text = @"Iniciar nuevo juego";
+//    [self.gameSelector setEnabled:YES];
 
     
 }
@@ -118,7 +122,11 @@
     
     //Game
     //the price to play that selected card
+    //original game
 //    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
+    
+    //
+//    self.gameStateString = [self.game twoCardGame:[self.cardButtons indexOfObject:sender]];
     self.gameStateString = [self.game twoCardGame:[self.cardButtons indexOfObject:sender]];
     //this is in the view
     self.flipedCard = [self.game cardAtIndex:[self.cardButtons indexOfObject:sender]];
@@ -144,21 +152,25 @@
         NSLog(@"selected two cards");
         [self.gameSelector removeSegmentAtIndex:2 animated:YES];
         //[self.gameSelector removeSegmentAtIndex:0 animated:YES];
+        self.game.matchingCardGameMode = TWO_CARD_MODE;
+    
     }
     if (self.gameSelector.selectedSegmentIndex == 2) {    
         //
         [self.gameSelector removeSegmentAtIndex:1 animated:YES];
-        NSLog(@"selected three cards");
+        
+//        NSLog(@"selected three cards");
         
         //[self.gameSelector removeSegmentAtIndex:0 animated:YES];
         NSLog(@"selected three cards");
+        self.game.matchingCardGameMode = THREE_CARD_MODE;
     }
     
-   // NSLog(@"UISelectedSegment setEnalbe: No");
-   // for (NSUInteger i = 0; i < self.gameSelector.numberOfSegments; i++) {
-   //     [self.gameSelector setEnabled:NO forSegmentAtIndex:i];
-   //         NSLog(@"UISelectedSegment setEnalbe: No atIndex: %i",i);
-   // }
+    NSLog(@"UISelectedSegment setEnalbe: No");
+    for (NSUInteger i = 0; i < self.gameSelector.numberOfSegments; i++) {
+        [self.gameSelector setEnabled:NO forSegmentAtIndex:i];
+            NSLog(@"UISelectedSegment setEnalbe: No atIndex: %i",i);
+    }
 }
 
 
