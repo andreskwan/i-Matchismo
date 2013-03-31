@@ -136,12 +136,29 @@
 }
 
 - (IBAction)selectedGame:(id)sender {
-    if (self.gameSelector.selectedSegmentIndex == 0) {
-        NSLog(@"selected two cards");
+    NSLog(@"before");
+    if (self.gameSelector.selectedSegmentIndex == 0) {        
+        
     }
     if (self.gameSelector.selectedSegmentIndex == 1) {
+        NSLog(@"selected two cards");
+        [self.gameSelector removeSegmentAtIndex:2 animated:YES];
+        //[self.gameSelector removeSegmentAtIndex:0 animated:YES];
+    }
+    if (self.gameSelector.selectedSegmentIndex == 2) {    
+        //
+        [self.gameSelector removeSegmentAtIndex:1 animated:YES];
+        NSLog(@"selected three cards");
+        
+        //[self.gameSelector removeSegmentAtIndex:0 animated:YES];
         NSLog(@"selected three cards");
     }
+    
+   // NSLog(@"UISelectedSegment setEnalbe: No");
+   // for (NSUInteger i = 0; i < self.gameSelector.numberOfSegments; i++) {
+   //     [self.gameSelector setEnabled:NO forSegmentAtIndex:i];
+   //         NSLog(@"UISelectedSegment setEnalbe: No atIndex: %i",i);
+   // }
 }
 
 
