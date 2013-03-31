@@ -266,7 +266,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="65C-Vu-3FC">
-                                <rect key="frame" x="234" y="397" width="68" height="30"/>
+                                <rect key="frame" x="197" y="369" width="68" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal" title="Nuevo">
@@ -280,11 +280,24 @@
                                     <action selector="newGame" destination="2" eventType="touchUpInside" id="02Z-TF-JMz"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Akh-zh-Y94">
+                                <rect key="frame" x="163" y="415" width="137" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Cartas"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                </segments>
+                                <connections>
+                                    <action selector="selectedGame:" destination="2" eventType="valueChanged" id="ctD-ei-LP0"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="flipsLabel" destination="grq-ha-Bnf" id="4EP-4d-Bqq"/>
+                        <outlet property="gameSelector" destination="Akh-zh-Y94" id="eTC-Zm-s8u"/>
                         <outlet property="machedCardsLabel" destination="uKQ-xo-gpv" id="bLW-XT-MU6"/>
                         <outlet property="scoreLabel" destination="zSF-vs-ONk" id="S2U-c6-9Tc"/>
                         <outletCollection property="cardButtons" destination="EgN-yt-xus" id="fxE-fH-wHV"/>
@@ -307,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="43" y="213"/>
+            <point key="canvasLocation" x="-10" y="206"/>
         </scene>
     </scenes>
     <classes>
