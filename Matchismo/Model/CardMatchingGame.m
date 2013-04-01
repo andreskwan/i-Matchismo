@@ -7,12 +7,13 @@
 
 
 #import "CardMatchingGame.h"
-
+#import "PlayingCard.h"
 @interface CardMatchingGame()
 @property (strong,nonatomic) NSMutableArray * cards;
 @property (nonatomic) int                     score;
 //@property (strong,nonatomic) NSArray * matchedCards;
 @property (strong,nonatomic) NSMutableArray * matchedCards;
+@property (strong, nonatomic)NSString   *matchedCardAttribute;
 @end
 
 @implementation CardMatchingGame
@@ -20,32 +21,32 @@
 //this game will use just this amount of cards "count"
 - (id) initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck
 {
-    self = [super init];
-    if (self) {
-        for (int i = 0; i < count; i++) {
-            Card *card = [deck drawRandomCard];
-            if (!card) {
-                self = nil;
-            }else{
-                self.cards[i] = card;
-            }
+self = [super init];
+if (self) {
+    for (int i = 0; i < count; i++) {
+        Card *card = [deck drawRandomCard];
+        if (!card) {
+            self = nil;
+        }else{
+            self.cards[i] = card;
         }
     }
-    return self;
+}
+return self;
 }
 
 - (NSMutableArray *)cards
 {
-    if (!_cards) {
-        _cards = [[NSMutableArray alloc]init];
-    }
-    return _cards;
+if (!_cards) {
+    _cards = [[NSMutableArray alloc]init];
+}
+return _cards;
 }
 
 - (Card *) cardAtIndex:(NSUInteger)index
 {
-    //just validate that the index is valid, not if is the same?
-    return (index < self.cards.count) ? self.cards[index]: nil;
+//just validate that the index is valid, not if is the same?
+return (index < self.cards.count) ? self.cards[index]: nil;
 }
 
 #define FLIP_COST 1
@@ -58,80 +59,21 @@
 //set the state in the playing deck
 //
 - (void)flipCardAtIndex:(NSUInteger)index{
-    [self twoCardGame:index];
+[self twoCardGame:index];
 }
 
 //- (NSString *)flipCardAtIndex:(NSUInteger)index{
 //    return [self twoCardGame:index];
 //}
 //- (void)threeCardGame:(NSArray){
-    
+
 //}
 
 -(NSString *)two_CardGame:(NSUInteger)index{
-
-    //identify the card in the set of cards being played
-    Card *card = [self cardAtIndex:index];
-    //NSString * gameStateString = [NSString stringWithFormat:@"Flipped up %@", card.contents];
-    NSString * gameStateString = [NSString stringWithFormat:@"Carta girada %@", card.contents];
-    
- 
-        //what makes a card unplayable??? NO means playable
-        //card can be played?
-        if (!card.isUnplayable) {
-            //iterate over all playing cards
-            for (Card *otherCard in self.cards) {
-                //playing with just one deck of cards
-                //that is why card can't be equal to otherCard
-                //to avoid to hava a match with the same card
-                if (card != otherCard) {
-                    //otherCard.isFaceUp
-                    //  the card has been fliped and contents is visible
-                    //!otherCard.isUnplayable
-                    //  NO - has not beeing matched yet, you can play with it
-                    if (otherCard.isFaceUp && !otherCard.isUnplayable) {
-                        int matchScore = [card match:@[otherCard]];
-                        if (matchScore) {
-                                otherCard.unpleyable = YES;
-                                card.unpleyable = YES;
-                                self.score += matchScore * MATCH_BONUS;
-                                NSLog(@"MATCH_BONUS: %d", MATCH_BONUS);
-                                //gameStateString = [NSString stringWithFormat:@"Matched %@ & %@ for %d points", card.contents, otherCard.contents, MATCH_BONUS];
-                                gameStateString = [NSString stringWithFormat:@"%@ & %@ (%d pts)", card.contents, otherCard.contents, MATCH_BONUS];
-                                NSLog(@"%@",gameStateString);
-                        }else{
-                            //TWO CARD GAME
-                            otherCard.faceUp = NO;
-                            self.score -= MISMATCH_PENALTY;
-                            NSLog(@"MISMATCH_PENALTY: %d",MISMATCH_PENALTY);
-                            //gameStateString = [NSString stringWithFormat:@"%@ & %@ Don't match! - %d", card.contents, otherCard.contents, MISMATCH_PENALTY];
-                            gameStateString = [NSString stringWithFormat:@"%@ & %@ (-%d pts)", card.contents, otherCard.contents, MISMATCH_PENALTY];
-                            NSLog(@"%@",gameStateString);
-                        }
-                    }
-                    //NSLog(@"otherCard not matched: %@: ", otherCard.contents);
-                }
-            }
-            self.score -= FLIP_COST;
-            NSLog(@"FLIP_COST: %d",FLIP_COST);
-            //for first time
-            //set it as faceUp = YES
-            //this card become one the otherCard whit this state set
-            card.faceUp = !card.isFaceUp;
-            //
-            NSLog(@"%@",gameStateString);   
-        }
-    return gameStateString;
-}
-
--(NSString *)twoCardGame:(NSUInteger)index{
 //identify the card in the set of cards being played
 Card *card = [self cardAtIndex:index];
 //NSString * gameStateString = [NSString stringWithFormat:@"Flipped up %@", card.contents];
 NSString * gameStateString = [NSString stringWithFormat:@"Carta girada %@", card.contents];
-
-    NSLog(@"self.matchedCards.count %lu", (unsigned long)self.matchedCards.count);
-if (self.matchedCards.count <1) {
     //what makes a card unplayable??? NO means playable
     //card can be played?
     if (!card.isUnplayable) {
@@ -148,21 +90,78 @@ if (self.matchedCards.count <1) {
                 if (otherCard.isFaceUp && !otherCard.isUnplayable) {
                     int matchScore = [card match:@[otherCard]];
                     if (matchScore) {
-                        NSLog(@"you score. NICE!!!");
-                        if (self.matchingCardGameMode == 2) {
                             otherCard.unpleyable = YES;
                             card.unpleyable = YES;
                             self.score += matchScore * MATCH_BONUS;
                             NSLog(@"MATCH_BONUS: %d", MATCH_BONUS);
                             //gameStateString = [NSString stringWithFormat:@"Matched %@ & %@ for %d points", card.contents, otherCard.contents, MATCH_BONUS];
                             gameStateString = [NSString stringWithFormat:@"%@ & %@ (%d pts)", card.contents, otherCard.contents, MATCH_BONUS];
-//                            NSLog(@"%@",gameStateString);
+                            NSLog(@"%@",gameStateString);
+                    }else{
+                        //TWO CARD GAME
+                        otherCard.faceUp = NO;
+                        self.score -= MISMATCH_PENALTY;
+                        NSLog(@"MISMATCH_PENALTY: %d",MISMATCH_PENALTY);
+                        //gameStateString = [NSString stringWithFormat:@"%@ & %@ Don't match! - %d", card.contents, otherCard.contents, MISMATCH_PENALTY];
+                        gameStateString = [NSString stringWithFormat:@"%@ & %@ (-%d pts)", card.contents, otherCard.contents, MISMATCH_PENALTY];
+                        NSLog(@"%@",gameStateString);
+                    }
+                }
+                //NSLog(@"otherCard not matched: %@: ", otherCard.contents);
+            }
+        }
+        self.score -= FLIP_COST;
+        NSLog(@"FLIP_COST: %d",FLIP_COST);
+        //for first time
+        //set it as faceUp = YES
+        //this card become one the otherCard whit this state set
+        card.faceUp = !card.isFaceUp;
+        //
+        NSLog(@"%@",gameStateString);   
+    }
+return gameStateString;
+}
+
+-(NSString *)twoCardGame:(NSUInteger)index{
+    //identify the card in the set of cards being played
+    Card *card = [self cardAtIndex:index];
+    //NSString * gameStateString = [NSString stringWithFormat:@"Flipped up %@", card.contents];
+    NSString * gameStateString = [NSString stringWithFormat:@"Carta girada %@", card.contents];
+
+    NSLog(@"self.matchedCards.count %lu", (unsigned long)self.matchedCards.count);
+    if (self.matchedCards.count <1) {
+    //what makes a card unplayable??? NO means playable
+    //card can be played?
+    if (!card.isUnplayable) {
+        //iterate over all playing cards
+        for (Card *otherCard in self.cards) {
+            //playing with just one deck of cards
+            //that is why card can't be equal to otherCard
+            //to avoid to hava a match with the same card
+            if (card != otherCard) {
+                //otherCard.isFaceUp
+                //  the card has been fliped and contents is visible
+                //!otherCard.isUnplayable
+                //  NO - has not beeing matched yet, you can play with it
+                if (otherCard.isFaceUp && !otherCard.isUnplayable) {
+                    int matchScore = [card match:@[otherCard]];
+                    if (matchScore) {
+                        //NSLog(@"you score. NICE!!!");
+                        if (self.matchingCardGameMode == 2) {
+                            NSLog(@"two card mode!!!");
+                            otherCard.unpleyable = YES;
+                            card.unpleyable = YES;
+                            self.score += matchScore * MATCH_BONUS;
+                            NSLog(@"MATCH_BONUS: %d", MATCH_BONUS);
+                            //gameStateString = [NSString stringWithFormat:@"Matched %@ & %@ for %d points", card.contents, otherCard.contents, MATCH_BONUS];
+                            gameStateString = [NSString stringWithFormat:@"%@ & %@ (%d pts)", card.contents, otherCard.contents, MATCH_BONUS];
+        //                            NSLog(@"%@",gameStateString);
                         }else if (self.matchingCardGameMode == 3){
-                            gameStateString = [NSString stringWithFormat:@"%@ & %@, una +", card.contents, otherCard.contents];
+                            NSLog(@"three card mode");
+                            gameStateString = [NSString stringWithFormat:@"%@,%@, una +", card.contents, otherCard.contents];
                             self.matchedCards = [[NSMutableArray alloc]initWithObjects:card,otherCard, nil];
-//                            gameStateString = [self.matchedCards componentsJoinedByString:@" K "];
-//                            NSLog(gameStateString);
-                            
+        //                            gameStateString = [self.matchedCards componentsJoinedByString:@" K "];
+        //                            NSLog(gameStateString);
                         }
                     }else{
                         //TWO CARD GAME
@@ -185,16 +184,45 @@ if (self.matchedCards.count <1) {
         card.faceUp = !card.isFaceUp;
         //
         NSLog(@"%@",gameStateString);
+        }
     }
-}else{
-
-    gameStateString = [NSString stringWithFormat:@"tienes %d cartas", 3 ];
-    NSLog(@"gameStateString with 3 cards: %@",gameStateString);
-    gameStateString = [NSString stringWithFormat:@"Carta girada %@", card.contents];
-//    [self.matchedCards addObject:card];
-//   int matchThree = card matchThree];
-    
-
+    else
+    {
+        //gameStateString = [NSString stringWithFormat:@"tienes %d cartas", 3 ];
+        NSLog(@"gameStateString with 3 cards: %@",gameStateString);
+        //gameStateString = [NSString stringWithFormat:@"Carta girada %@", card.contents];
+        //    [self.matchedCards addObject:card];    
+        PlayingCard *playingCard = (PlayingCard * )card;
+        //    NSString * atributoCarta = [PlayingCard matched];
+        //    NSLog(@"atributoCarta %@", atributoCarta);
+        int matchThree = [playingCard verfyMatch:self.matchedCards];
+        NSLog(@"matchThree: %i", matchThree);
+        NSMutableArray * mutableArray = [[NSMutableArray alloc]init];        
+        if (matchThree) {
+            card.faceUp     = YES;
+            card.unpleyable = YES;
+            [mutableArray addObject:@"YES"];
+            [mutableArray addObject:card.contents];
+            for (PlayingCard * playingCard in self.matchedCards) {
+                playingCard.faceUp      = YES;
+                playingCard.unpleyable  = YES;
+                [mutableArray addObject:playingCard.contents];
+            }
+        }
+        else
+        {
+            card.faceUp     = NO;
+            card.unpleyable = NO;
+            [mutableArray addObject:@"NO"];
+            [mutableArray addObject:card.contents];
+            for (PlayingCard * playingCard in self.matchedCards) {
+                playingCard.faceUp = NO;
+                playingCard.unpleyable = NO;
+                [mutableArray addObject:playingCard.contents];
+            }
+        }
+        gameStateString = [mutableArray componentsJoinedByString:@"! "];
+        self.matchedCards = nil;
 }
 return gameStateString;
 }

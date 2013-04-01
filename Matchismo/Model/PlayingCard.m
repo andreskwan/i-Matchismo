@@ -53,36 +53,67 @@
     }
 }
 
+//- (int)match:(NSArray *)otherCards
+//{
+//    NSLog(@"----------------------------------");
+//    NSLog(@"PlayingCard.match");
+//    int score = 0;    
+//    if (otherCards.count == 1) {
+//        PlayingCard *otherCard = [otherCards lastObject];
+//        if ([otherCard.suit isEqualToString:self.suit]) {
+//            score = 1;
+//            
+//        }else if (otherCard.rank == self.rank){
+//            score = 4;
+//            
+//        }
+//    }
+//    return score;
+//}
+
 - (int)match:(NSArray *)otherCards
 {
     NSLog(@"----------------------------------");
     NSLog(@"PlayingCard.match");
-    int score = 0;    
-    if (otherCards.count == 1) {
-        PlayingCard *otherCard = [otherCards lastObject];
+    NSLog(@"otherCards.count: %i",otherCards.count);
+    int score = 0;
+    for (PlayingCard * otherCard in otherCards) {
+        NSLog(@"otherCard: %@", otherCard.contents);
         if ([otherCard.suit isEqualToString:self.suit]) {
-            score = 1;
-            
+            score += 1;
+            self.matchedCardAttribute = self.suit;
         }else if (otherCard.rank == self.rank){
-            score = 4;
-            
+            score += 4;
+            self.matchedCardAttribute = @"#";
         }
+        NSLog(@"self.matchedCardAttribute: %@",self.matchedCardAttribute );
     }
     return score;
 }
 
-- (int)matchThree:(NSArray *)otherCards
-{
+-(int) verfyMatch:(NSMutableArray *)matchedCards {
     int score = 0;
-    for (PlayingCard * otherCard in otherCards) {
-        if ([otherCard.suit isEqualToString:self.suit]) {
-            score += 2;
-        }else if (otherCard.rank == self.rank){
-            score += 8;
+    if (![self.matchedCardAttribute compare:@"#"]) {
+        for (PlayingCard * playingCard in matchedCards) {
+            if ([playingCard.suit isEqualToString:self.suit]) {
+                score += 8;
+                NSLog(@"♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣");
+                NSLog(@"Matched by suit");
+                NSLog(@"self.matchedCardAttribute: %@",self.matchedCardAttribute );
+            }
         }
-
+    }else{
+        for (PlayingCard * playingCard in matchedCards) {
+            if (playingCard.rank == self.rank) {
+                score += 16;
+                NSLog(@"#########################################################");
+                NSLog(@"Mached by rank");
+                NSLog(@"self.matchedCardAttribute: %@",self.matchedCardAttribute );
+            }
+        }
     }
-    return score;
+    NSLog(@"score: %i",score);
+    return  score;
 }
 
 #pragma mark Static Methods
@@ -104,6 +135,13 @@
         rankStrings = @[@"?", @"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"J",@"Q",@"K"];
     }
     return rankStrings;
+}
+
++ (NSString *)matchedAttribute:(NSString*)attribute
+{
+    static  NSString * matchedCardsAttribute = nil;
+    matchedCardsAttribute = attribute;
+    return matchedCardsAttribute;
 }
 
 @end

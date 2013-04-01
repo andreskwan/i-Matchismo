@@ -1,0 +1,3 @@
+<map id="PlayingCardDeck" name="PlayingCardDeck">
+<area shape="rect" id="node2" href="$interface_deck.html" title="{Deck\n||+ addCard:atTop:\l+ drawRandomCard\l}" alt="" coords="4,137,144,234"/>
+</map>

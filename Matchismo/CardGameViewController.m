@@ -155,12 +155,9 @@
         self.game.matchingCardGameMode = TWO_CARD_MODE;
     
     }
-    if (self.gameSelector.selectedSegmentIndex == 2) {    
-        //
+    if (self.gameSelector.selectedSegmentIndex == 2) {
         [self.gameSelector removeSegmentAtIndex:1 animated:YES];
-        
 //        NSLog(@"selected three cards");
-        
         //[self.gameSelector removeSegmentAtIndex:0 animated:YES];
         NSLog(@"selected three cards");
         self.game.matchingCardGameMode = THREE_CARD_MODE;
@@ -169,7 +166,7 @@
     NSLog(@"UISelectedSegment setEnalbe: No");
     for (NSUInteger i = 0; i < self.gameSelector.numberOfSegments; i++) {
         [self.gameSelector setEnabled:NO forSegmentAtIndex:i];
-            NSLog(@"UISelectedSegment setEnalbe: No atIndex: %i",i);
+        NSLog(@"UISelectedSegment setEnalbe: No atIndex: %i",i);
     }
 }
 

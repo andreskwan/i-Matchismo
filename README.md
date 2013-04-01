@@ -61,6 +61,9 @@ commit the version without segmenteSelector
 commit everything 
 now trying to create a method called matchThree
 
+6:50
+its working but some things to be ajusted
+
 
 TODO
 03/30/13

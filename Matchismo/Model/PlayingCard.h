@@ -13,8 +13,13 @@
 @property (strong, nonatomic)NSString   *suit;
 //same as weak?
 @property (nonatomic)NSUInteger         rank;
+@property (strong, nonatomic)NSString   *matchedCardAttribute;
 
+//-(int) verfyMatch:(NSMutableArray *)matchedCards withAttribute:(NSString *)cardsMatchedAttribute;
+-(int) verfyMatch:(NSMutableArray *)matchedCards;
 + (NSArray *)validSuits;
 + (NSUInteger)maxRank;
+//+ (void)setMatchedAttribute;
++ (NSString *)matchedAttribute;
 
 @end
