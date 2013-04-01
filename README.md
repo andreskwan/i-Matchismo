@@ -56,6 +56,12 @@ but I'll allow it because it's my first time
 6:42 
 commit the version without segmenteSelector
 
+04/01
+11:08 
+commit everything 
+now trying to create a method called matchThree
+
+
 TODO
 03/30/13
 - review video related with this subject setting button states

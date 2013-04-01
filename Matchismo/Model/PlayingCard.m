@@ -55,8 +55,9 @@
 
 - (int)match:(NSArray *)otherCards
 {
-    int score = 0;
-    
+    NSLog(@"----------------------------------");
+    NSLog(@"PlayingCard.match");
+    int score = 0;    
     if (otherCards.count == 1) {
         PlayingCard *otherCard = [otherCards lastObject];
         if ([otherCard.suit isEqualToString:self.suit]) {
@@ -67,8 +68,20 @@
             
         }
     }
-    
-    
+    return score;
+}
+
+- (int)matchThree:(NSArray *)otherCards
+{
+    int score = 0;
+    for (PlayingCard * otherCard in otherCards) {
+        if ([otherCard.suit isEqualToString:self.suit]) {
+            score += 2;
+        }else if (otherCard.rank == self.rank){
+            score += 8;
+        }
+
+    }
     return score;
 }
 

@@ -10,11 +10,11 @@
 
 @interface Card : NSObject
 
-@property (strong, nonatomic)NSString * contents;
-@property (nonatomic, getter = isFaceUp) BOOL faceUp;
+@property (strong, nonatomic)NSString               * contents;
+@property (nonatomic, getter = isFaceUp) BOOL       faceUp;
 
 //TODO what makes that a card is playable or not?
-@property (nonatomic, getter = isUnplayable) BOOL unpleyable;
+@property (nonatomic, getter = isUnplayable) BOOL   unpleyable;
 
 - (int)match:(NSArray *)otherCards; 
 

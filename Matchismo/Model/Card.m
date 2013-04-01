@@ -13,6 +13,8 @@
 
 - (int)match:(NSArray *)otherCards
 {
+    NSLog(@"----------------------------------");
+    NSLog(@"card.match");
     int score = 0;
     for (Card *card in otherCards) {
         if ([card.contents isEqualToString:self.contents]) {

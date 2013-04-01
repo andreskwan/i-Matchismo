@@ -11,8 +11,8 @@
 @interface CardMatchingGame()
 @property (strong,nonatomic) NSMutableArray * cards;
 @property (nonatomic) int                     score;
-@property (strong,nonatomic) NSArray * matchedCards;
-
+//@property (strong,nonatomic) NSArray * matchedCards;
+@property (strong,nonatomic) NSMutableArray * matchedCards;
 @end
 
 @implementation CardMatchingGame
@@ -41,7 +41,6 @@
     }
     return _cards;
 }
-
 
 - (Card *) cardAtIndex:(NSUInteger)index
 {
@@ -131,7 +130,8 @@ Card *card = [self cardAtIndex:index];
 //NSString * gameStateString = [NSString stringWithFormat:@"Flipped up %@", card.contents];
 NSString * gameStateString = [NSString stringWithFormat:@"Carta girada %@", card.contents];
 
-if (!self.matchedCards.count) {
+    NSLog(@"self.matchedCards.count %lu", (unsigned long)self.matchedCards.count);
+if (self.matchedCards.count <1) {
     //what makes a card unplayable??? NO means playable
     //card can be played?
     if (!card.isUnplayable) {
@@ -148,6 +148,7 @@ if (!self.matchedCards.count) {
                 if (otherCard.isFaceUp && !otherCard.isUnplayable) {
                     int matchScore = [card match:@[otherCard]];
                     if (matchScore) {
+                        NSLog(@"you score. NICE!!!");
                         if (self.matchingCardGameMode == 2) {
                             otherCard.unpleyable = YES;
                             card.unpleyable = YES;
@@ -155,10 +156,13 @@ if (!self.matchedCards.count) {
                             NSLog(@"MATCH_BONUS: %d", MATCH_BONUS);
                             //gameStateString = [NSString stringWithFormat:@"Matched %@ & %@ for %d points", card.contents, otherCard.contents, MATCH_BONUS];
                             gameStateString = [NSString stringWithFormat:@"%@ & %@ (%d pts)", card.contents, otherCard.contents, MATCH_BONUS];
-                            NSLog(@"%@",gameStateString);
+//                            NSLog(@"%@",gameStateString);
                         }else if (self.matchingCardGameMode == 3){
-                            gameStateString = [NSString stringWithFormat:@"%@ & %@, UNA +", card.contents, otherCard.contents];
-                            self.matchedCards = @[card,otherCard];
+                            gameStateString = [NSString stringWithFormat:@"%@ & %@, una +", card.contents, otherCard.contents];
+                            self.matchedCards = [[NSMutableArray alloc]initWithObjects:card,otherCard, nil];
+//                            gameStateString = [self.matchedCards componentsJoinedByString:@" K "];
+//                            NSLog(gameStateString);
+                            
                         }
                     }else{
                         //TWO CARD GAME
@@ -183,8 +187,14 @@ if (!self.matchedCards.count) {
         NSLog(@"%@",gameStateString);
     }
 }else{
+
     gameStateString = [NSString stringWithFormat:@"tienes %d cartas", 3 ];
+    NSLog(@"gameStateString with 3 cards: %@",gameStateString);
     gameStateString = [NSString stringWithFormat:@"Carta girada %@", card.contents];
+//    [self.matchedCards addObject:card];
+//   int matchThree = card matchThree];
+    
+
 }
 return gameStateString;
 }
