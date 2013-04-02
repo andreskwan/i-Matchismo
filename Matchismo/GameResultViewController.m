@@ -9,6 +9,7 @@
 #import "GameResultViewController.h"
 
 @interface GameResultViewController ()
+@property (strong, nonatomic) IBOutlet UITextView *display;
 
 @end
 
