@@ -25,6 +25,12 @@
         _start = [NSDate date];
         _end   = _start;
     }
+    return self;
+}
+
+-(NSTimeInterval)duration
+{
+    return [self.end timeIntervalSinceDate:self.start];
 }
 
 @end
