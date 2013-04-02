@@ -69,9 +69,12 @@ TODO
 - use a modal window to ask the user if he is sure about to start a new game
 - create a splash for the game
 
+04/01
+create the GameResult class in the model side
 
 03/31/13
 objective-c
 - file with globals???
 5:29 
 - show the user if he is playing two mode or three mode
+

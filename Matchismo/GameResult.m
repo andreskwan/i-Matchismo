@@ -8,6 +8,23 @@
 
 #import "GameResult.h"
 
+@interface GameResult()
+@property (readwrite, nonatomic)NSDate *start;
+@property (readwrite, nonatomic)NSDate *end;
+
+@end
+
+
 @implementation GameResult
+
+//designed initilizer
+-(id)init
+{
+    self = [super init];
+    if (self){
+        _start = [NSDate date];
+        _end   = _start;
+    }
+}
 
 @end
