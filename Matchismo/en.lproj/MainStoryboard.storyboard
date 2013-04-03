@@ -323,7 +323,7 @@
             </objects>
             <point key="canvasLocation" x="662" y="-339"/>
         </scene>
-        <!--Game Result View Controller - Item-->
+        <!--Game Result View Controller - Game Results-->
         <scene sceneID="o73-Fi-0Ap">
             <objects>
                 <viewController id="CKQ-rQ-xrU" customClass="GameResultViewController" sceneMemberID="viewController">
@@ -377,7 +377,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="dRu-v4-sPc"/>
+                    <tabBarItem key="tabBarItem" title="Game Results" id="dRu-v4-sPc"/>
                     <connections>
                         <outlet property="display" destination="8rd-Op-LLe" id="bqL-jW-h1P"/>
                     </connections>
@@ -390,7 +390,7 @@
         <scene sceneID="ljE-UI-qd2">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="mnb-cw-kFk" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="TzD-95-j2c">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>

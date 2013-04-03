@@ -22,7 +22,7 @@
 
 -(void)awakeFromNib
 {
-    
+    [self setup];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

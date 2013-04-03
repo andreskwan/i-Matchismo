@@ -10,25 +10,26 @@
 #import "PlayingCardDeck.h"
 #import "CardMatchingGame.h"
 #import "PlayingCard.h"
+#import "GameResult.h"
 
 @interface CardGameViewController ()
 
-@property (weak, nonatomic)     IBOutlet UILabel        *flipsLabel;
-@property (nonatomic)           int                     flipCount;
-
+@property (weak, nonatomic)     IBOutlet UILabel                        *flipsLabel;
+@property (nonatomic)           int                                     flipCount;
+@property (strong, nonatomic)   IBOutletCollection(UIButton) NSArray    *cardButtons;
+@property (strong, nonatomic)   CardMatchingGame                        *game;
+@property (weak, nonatomic)     IBOutlet UILabel                        *scoreLabel;
+@property (strong, nonatomic)   GameResult                              *gameResult;
 //@property (strong, nonatomic) Deck *deck;
 
-@property (strong, nonatomic)   CardMatchingGame        *game;
-@property (weak, nonatomic)     IBOutlet UILabel        *scoreLabel;
-@property (strong, nonatomic)   IBOutlet UILabel        *machedCardsLabel;
 
-@property (nonatomic)           NSString                *machedCards;
-@property (weak, nonatomic)     Card                    *flipedCard;
-
-@property (strong, nonatomic)   IBOutletCollection(UIButton) NSArray *cardButtons;
-@property (strong, nonatomic)   NSString                *gameStateString;
-@property (strong, nonatomic)   IBOutlet UISegmentedControl *gameSelector;
-@property (nonatomic)           NSUInteger              *chooseGame;
+//Properties ought to the HW1, first assigment 
+@property (strong, nonatomic)   IBOutlet UILabel                        *machedCardsLabel;
+@property (nonatomic)           NSString                                *machedCards;
+@property (weak, nonatomic)     Card                                    *flipedCard;
+@property (strong, nonatomic)   NSString                                *gameStateString;
+@property (strong, nonatomic)   IBOutlet UISegmentedControl             *gameSelector;
+@property (nonatomic)           NSUInteger                              *chooseGame;
 @end
 
 @implementation CardGameViewController
@@ -42,6 +43,7 @@
 //    }
 //    return  _deck;
 //}
+
 
 - (IBAction)newGame {
     //[self setCardButtons:]

@@ -1,3 +1,6 @@
+--------------------------------
+Activities
+--------------------------------
 Stanfor University Class
 
 03/30/13
@@ -56,7 +59,10 @@ but I'll allow it because it's my first time
 6:42 
 commit the version without segmenteSelector
 
+--------------------------------
 TODO
+--------------------------------
+
 03/30/13
 - review video related with this subject setting button states
 
@@ -72,9 +78,17 @@ TODO
 04/01
 create the GameResult class in the model side
 
+--------------------------------
+Questions
+--------------------------------
+
 03/31/13
 objective-c
 - file with globals???
 5:29 
 - show the user if he is playing two mode or three mode
 
+GIT
+
+how to merge the readme file after each commit?
+a commond file for my repo
