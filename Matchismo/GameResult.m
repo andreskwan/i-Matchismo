@@ -72,7 +72,7 @@
     return @{START_KEY :self.start, END_KEY :self.end, SCORE_KEY : @(self.score)};
 }
 
--(NSArray *)allGameResults
++(NSArray *)allGameResults
 {
     NSMutableArray *allGameResults = [[NSMutableArray alloc]init];
     

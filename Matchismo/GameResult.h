@@ -10,11 +10,12 @@
 
 @interface GameResult : NSObject
 //can be read from the outside but not modified
-@property (readonly,nonatomic)NSDate *start;
-@property (readonly,nonatomic)NSDate *end;
-@property (nonatomic)int score;
+@property (readonly,nonatomic)NSDate            *start;
+@property (readonly,nonatomic)NSDate            *end;
+@property (nonatomic)int                        score;
 
-@property (readonly,nonatomic)NSTimeInterval duration;
+@property (readonly,nonatomic)NSTimeInterval    duration;
 
++(NSArray * )allGameResults;//of Game results
 
 @end

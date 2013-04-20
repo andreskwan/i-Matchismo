@@ -36,22 +36,21 @@
 
 #define TWO_CARD_MODE   2
 #define THREE_CARD_MODE 3
-//- (Deck *) deck
-//{
-//    if (!_deck) {
-//        _deck = [[PlayingCardDeck alloc]init];
-//    }
-//    return  _deck;
-//}
 
+-(GameResult *)gameResult
+{
+    if (!_gameResult) _gameResult = [[GameResult alloc]init];
+    return _gameResult;
+}
 
 - (IBAction)newGame {
     //[self setCardButtons:]
     //elimino juego anterior
     self.game = nil;
+    self.gameResult = nil;
     self.flipCount = 0;
-        //creo nuevo juego
-    [self game];
+//  creo nuevo juego
+//  [self game];
     [self updateUI];
     //self.machedCardsLabel.text = @"New game started";
     self.machedCardsLabel.text = @"Iniciar nuevo juego";
@@ -114,7 +113,7 @@
 - (void) setFlipCount:(int)flipCount{
     _flipCount = flipCount;
     //self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
-    self.flipsLabel.text = [NSString stringWithFormat:@"Giros: %d", self.flipCount];
+    self.flipsLabel.text = [NSString stringWithFormat:@"Giros: %d", self.flipCount];    
     NSLog(@"flips updated to %d",self.flipCount);
 }
 
@@ -132,12 +131,13 @@
     self.gameStateString = [self.game twoCardGame:[self.cardButtons indexOfObject:sender]];
     //this is in the view
     self.flipedCard = [self.game cardAtIndex:[self.cardButtons indexOfObject:sender]];
-    
-    NSLog(@"self.flipedCard: %@",self.flipedCard.contents);
+
+//    NSLog(@"self.flipedCard: %@",self.flipedCard.contents);
     
     //
     self.flipCount++;
     [self updateUI];
+    self.gameResult.score = self.game.score;
     
 }
 
